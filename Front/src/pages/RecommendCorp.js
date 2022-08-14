@@ -14,12 +14,12 @@ const Wrap = styled.div`
     position: relative;
     padding-bottom: 70px;
     overflow: hidden;
-   
+	
     // 1. Global style 추가했던 것을 슬라이드 상단에 Wrap을 만들어 여기서 선언했습니다.
     .slick-slide {
         display: inline-block;
     }
-   
+	
     // 2. 제가 추가한 커스텀 클래스입니다.
     // pagination 부분입니다.
     .slick-dots.slick-thumb {
@@ -35,7 +35,7 @@ const Wrap = styled.div`
         li {
             position: relative;
             display: inline-block;
-         
+			
             &.slick-active {
                 span {
                     filter: none;
@@ -120,7 +120,7 @@ const RecommendCorp = () => {
         list();
     },[]); 
 
-   // 6. slick에 추가할 세팅입니다.
+	// 6. slick에 추가할 세팅입니다.
     const settings = {
         dots: true,
         // 5. custom arrows를 만들기 위해 기본 arrows옵션을 false로 합니다.
@@ -141,22 +141,21 @@ const RecommendCorp = () => {
         },
     };
     
-   // 5. custom arrows 동작 함수를 만듭니다.
+	// 5. custom arrows 동작 함수를 만듭니다.
     const previous = useCallback(() => slickRef.current.slickPrev(), []);
     const next = useCallback(() => slickRef.current.slickNext(), []);
     
     return (
         <div className='container'>
             <Wrap>
-         <Slick 
+			<Slick 
             ref={slickRef} {...settings} >
             {
                 dto && dto.map((v,idx)=>(
                     
                         
                         <SlickItems className='slideitem' key={idx} onClick={()=>{navi('job_posting/detail/'+v.corp_id+'/'+v.num)}} >
-                            <img className='slideimg' src={photoUrl+v.job_posting_photo} alt=''  
-                            />
+                            <img className='slideimg' src={photoUrl+v.job_posting_photo} alt=''  />
                             <div className='slidetitle'>
                             {v.corp_name}<br/>
                             {v.title}</div>

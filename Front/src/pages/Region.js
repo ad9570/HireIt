@@ -150,23 +150,25 @@ const Region = (props) => {
                         </Box>
                         </div>
                         </div>
-                        <div className='inputs'>
-                        <ul>
+                        <div className='inputs' >
+                        <ul style={{display:'block', height:'150px'}}>
                             {/* 배열.map()
                             배열.map(()=>{})
                             배열.map((데이터, 인덱스)=>{}) - 하나만 쓰면 데이터만 
                             배열.map((data, idx)=>(<></>))*/}
                         {props.region &&
                         props.region.map((row,idx)=> (
-                        <Button className='regionbtn' type='button' variant="outlined" key={idx}
-                        style={{textAlign:'center', borderRadius:'20px', borderbottom:'10px'}}
+                        <Button className='regionbtns' type='button' variant="outlined" key={idx}
+                        style={{textAlign:'center', borderRadius:'20px', fontSize:'1rem'}}
                         onDoubleClick={()=>dataRemove(idx)}>{row.prov + row.dist}</Button>
                         
                         ))
                         }
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </ul><br/>
-                        <p className='tot5'>* 최대 5개까지 선택가능 합니다. </p>
+                            
+                        </ul>
+                        <div className='maybe'><br/><br/><br/><br/><p className='tot5'>* 최대 5개까지 선택가능 합니다. </p></div>
+                        
                         
                         </div>
                     

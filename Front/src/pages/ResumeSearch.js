@@ -20,7 +20,7 @@ const ResumeSearch=({dto})=>{
     console.log("dto",dto.list);
     const {currentPage}=useParams();
     const navi=useNavigate();
-    
+    let photoUrl=process.env.REACT_APP_SPRING_URL+"image/";
     
     return(
         <div className="list1">
@@ -33,8 +33,8 @@ const ResumeSearch=({dto})=>{
                                 
                                 <ListItem alignItems="flex-start">
                                 <ListItemAvatar style={{fontSize:'2rem'}}>
-                                
-                                <img alt="Remy Sharp" src={v.user_photo} style={{width:'200px',marginTop:'5px', height:'210px'}} />
+                                <img src={photoUrl+v.user_photo} alt=''
+                                style={{width:'200px',marginTop:'5px', height:'210px'}} />
                                 </ListItemAvatar>
                                 <ListItemText
                                     primary=""
