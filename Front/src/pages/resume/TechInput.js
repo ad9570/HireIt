@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const TechInput = ({ setTech_tags, tech_tags }) => {
     const Tags = [

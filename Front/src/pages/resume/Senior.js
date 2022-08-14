@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AddSenior from './AddSenior';
+import AddSenior from 'pages/resume/AddSenior';
 
 const Senior = ({ arr, setArr }) => {
     const [sdd, setSdd] = useState('');

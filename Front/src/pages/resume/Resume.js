@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const Resume = ({ resumeList }) => {
 

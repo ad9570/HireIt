@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const AddSenior = ({ arr, setArr }) => {
     const [sdd, setSdd] = useState('');

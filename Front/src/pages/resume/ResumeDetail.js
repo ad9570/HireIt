@@ -1,13 +1,13 @@
 import React, { useRef, Component, useState, useEffect } from 'react';
-import './ResumeDetail.css';
+import 'pages/resume/ResumeDetail.css';
 import ReactToPrint from 'react-to-print';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import ResumeInput from './ResumeInput';
+import ResumeInput from 'pages/resume/ResumeInput';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { set } from 'react-hook-form';
-import PDFViewer from './PDFViewer';
+import PDFViewer from 'pages/resume/PDFViewer';
 
 const ResumeDetail = () => {
     const componentRef = useRef(); // 스캔 구역 지정 
@@ -89,8 +89,8 @@ const ResumeDetail = () => {
 
     //URL
     const Navi = useNavigate();
-    let detailUrl = "http://localhost:9000/resume/detail?resume_idx=" + resume_idx;
-    let photoUrl = "http://localhost:9000/save/";
+    let detailUrl = `${process.env.REACT_APP_SPRING_URL}resume/detail?resume_idx=${resume_idx}`;
+    let photoUrl = `${process.env.REACT_APP_SPRING_URL}save`;
 
     //resume 테이블에서 데이터 가져오기
     const resumeInfo = () => {

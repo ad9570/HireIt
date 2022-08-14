@@ -1,7 +1,7 @@
 import { borderRadius } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import DaumPostcode from "react-daum-postcode";
-import './JobPostingInput.css';
+import 'pages/job_posting/JobPostingInput.css';
 
 const Post = ({ com_addr, setCom_addr }) => {
 

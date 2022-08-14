@@ -25,9 +25,9 @@ const IndivDetailBtn = () => {
 
     //URL
     const Navi = useNavigate();
-    let getResumeList = "http://localhost:9000/resume/resumelist?username=" + username;
-    let jobInfoURL = "http://localhost:9000/jobposting/detail?num=" + num;
-    let insertURL = "http://localhost:9000/jobposting/insertapply";
+    let getResumeList = `${process.env.REACT_APP_SPRING_URL}resume/resumelist?username=${username}`;
+    let jobInfoURL = `${process.env.REACT_APP_SPRING_URL}jobposting/detail?num=${num}`;
+    let insertURL = `${process.env.REACT_APP_SPRING_URL}jobposting/insertapply`;
 
     const getRes = () => {
         axios.get(getResumeList).then(res => {

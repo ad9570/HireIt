@@ -11,9 +11,9 @@ const CorpInfo = ({ com_liked, corp_photo, corp_name, corp_addr, corp_hp, corp_e
     let user_id = localStorage.user_id;
 
     //URL
-    let photoUrl = "http://localhost:9000/save/";
-    let likedUrl = "http://localhost:9000/jobposting/updateliked";
-    let unlikeUrl = "http://localhost:9000/jobposting/unlike";
+    let photoUrl = `${process.env.REACT_APP_SPRING_URL}save/`;
+    let likedUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/updateliked`;
+    let unlikeUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/unlike`;
 
     const checkLiked = () => {
         if (com_liked.indexOf(corp_name) !== -1) {

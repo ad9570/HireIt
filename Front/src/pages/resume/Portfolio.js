@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 const Portfolio = ({ setPot_link, setPot_file, pot_link, pot_file }) => {
-    let uploadUrl = "http://localhost:9000/jobposting/upload";
+    let uploadUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/upload`;
 
     //file change 호출 이벤트
     const uploadImage = (e) => {

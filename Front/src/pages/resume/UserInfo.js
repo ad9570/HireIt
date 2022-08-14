@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserInfo = ({ user_gender, user_birth, user_email, user_hp, addr, addr_detail, user_photo, username, name }) => {
-    let photoUrl = "http://localhost:9000/save/";
+    let photoUrl = `${process.env.REACT_APP_SPRING_URL}save/`;
 
 
     return (

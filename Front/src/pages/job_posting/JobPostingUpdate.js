@@ -2,9 +2,9 @@ import { Info } from '@mui/icons-material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Category from './Category';
-import './JobPostingInput.css';
-import Post from './Post';
+import Category from 'pages/job_posting/Category';
+import 'pages/job_posting/JobPostingInput.css';
+import Post from 'pages/job_posting/Post';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -63,12 +63,12 @@ const JobPostingUpdate = () => {
 
     //URL
     const Navi = useNavigate();
-    let userInfoURL = "http://localhost:9000/jobposting/userinfo?username=" + user_id;
-    let insertURL = "http://localhost:9000/jobposting/insert";
-    let getNum = "http://localhost:9000/jobposting/getnum?corp_id=" + corp_id;
-    let uploadUrl = "http://localhost:9000/jobposting/upload";
-    let jobInfoURL = "http://localhost:9000/jobposting/detail?num=" + num;
-    let updateURL = "http://localhost:9000/jobposting/update";
+    let userInfoURL = `${process.env.REACT_APP_SPRING_URL}jobposting/userinfo?username=${user_id}`;
+    let insertURL = `${process.env.REACT_APP_SPRING_URL}jobposting/insert`;
+    let getNum = `${process.env.REACT_APP_SPRING_URL}jobposting/getnum?corp_id=${corp_id}`;
+    let uploadUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/upload`;
+    let jobInfoURL = `${process.env.REACT_APP_SPRING_URL}jobposting/detail?num=${num}`;
+    let updateURL = `${process.env.REACT_APP_SPRING_URL}jobposting/update`;
     //file change 호출 이벤트
     const uploadImage = (e) => {
         const uploadFile = e.target.files[0]; //업로드한 파일

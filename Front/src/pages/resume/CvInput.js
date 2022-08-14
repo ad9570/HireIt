@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const CvInput = ({ setCom_cv, com_cv }) => {
     const [letterNum, setLetterNum] = useState('');

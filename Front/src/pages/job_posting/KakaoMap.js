@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './JobPostingDetail.css';
+import 'pages/job_posting/JobPostingDetail.css';
 
 const { kakao } = window;
 

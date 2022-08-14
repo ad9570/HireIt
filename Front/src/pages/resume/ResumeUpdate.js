@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 import { set, useForm } from 'react-hook-form';
-import Resume from './Resume';
+import Resume from 'pages/resume/Resume';
 import { Link } from 'react-scroll';
-import TechInput from './TechInput';
-import CvInput from './CvInput';
-import IntroInput from './IntroInput';
-import Major from './Major';
-import Senior from './Senior';
-import TotalYM from './TotalYM';
-import Portfolio from './Portfolio';
+import TechInput from 'pages/resume/TechInput';
+import CvInput from 'pages/resume/CvInput';
+import IntroInput from 'pages/resume/IntroInput';
+import Major from 'pages/resume/Major';
+import Senior from 'pages/resume/Senior';
+import TotalYM from 'pages/resume/TotalYM';
+import Portfolio from 'pages/resume/Portfolio';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import AddSenior from './AddSenior';
+import AddSenior from 'pages/resume/AddSenior';
 import { getElementError } from '@testing-library/react';
 import { useRef } from 'react';
-import UserInfo from './UserInfo';
-import Category from './Category';
-import SideBar from './SideBar';
+import UserInfo from 'pages/resume/UserInfo';
+import Category from 'pages/resume/Category';
+import SideBar from 'pages/resume/SideBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -126,8 +126,8 @@ const ResumeUpdate = () => {
 
     //url 등록 
     const Navi = useNavigate();
-    let callBack = "http://localhost:9000/resume/detail?resume_idx=" + resume_idx; //get일때만 사용가능
-    let updateresume = "http://localhost:9000/resume/updateresume";
+    let callBack = `${process.env.REACT_APP_SPRING_URL}resume/detail?resume_idx=${resume_idx}`; //get일때만 사용가능
+    let updateresume = `${process.env.REACT_APP_SPRING_URL}resume/updateresume`;
 
     //info 값 불러오기 
     const savedInfo = () => {

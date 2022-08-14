@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 import { set, useForm } from 'react-hook-form';
-import Resume from './Resume';
+import Resume from 'pages/resume/Resume';
 import { Link } from 'react-scroll';
-import TechInput from './TechInput';
-import CvInput from './CvInput';
-import IntroInput from './IntroInput';
-import Major from './Major';
-import Senior from './Senior';
-import TotalYM from './TotalYM';
-import Portfolio from './Portfolio';
+import TechInput from 'pages/resume/TechInput';
+import CvInput from 'pages/resume/CvInput';
+import IntroInput from 'pages/resume/IntroInput';
+import Major from 'pages/resume/Major';
+import Senior from 'pages/resume/Senior';
+import TotalYM from 'pages/resume/TotalYM';
+import Portfolio from 'pages/resume/Portfolio';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import AddSenior from './AddSenior';
+import AddSenior from 'pages/resume/AddSenior';
 import { getElementError } from '@testing-library/react';
 import { useRef } from 'react';
-import UserInfo from './UserInfo';
-import Category from './Category';
-import SideBar from './SideBar';
+import UserInfo from 'pages/resume/UserInfo';
+import Category from 'pages/resume/Category';
+import SideBar from 'pages/resume/SideBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -127,12 +127,12 @@ const ResumeNewSave = () => {
     const { resume_idx } = useParams();
 
     //url 등록
-    let insertUrl = "http://localhost:9000/resume/insert";
-    let delSave = "http://localhost:9000/resume/savedelete?resume_idx=" + resume_idx;
-    let getIdx = "http://localhost:9000/resume/getdetailidx?username=" + user_id;
-    let saveResume = "http://localhost:9000/resume/saveresume";
-    let getNewIdx = "http://localhost:9000/resume/getidx?username=" + user_id;
-    let detailUrl = "http://localhost:9000/resume/detail?resume_idx=" + resume_idx;
+    let insertUrl = `${process.env.REACT_APP_SPRING_URL}resume/insert`;
+    let delSave = `${process.env.REACT_APP_SPRING_URL}resume/savedelete?resume_idx=${resume_idx}`;
+    let getIdx = `${process.env.REACT_APP_SPRING_URL}resume/getdetailidx?username=${user_id}`;
+    let saveResume = `${process.env.REACT_APP_SPRING_URL}resume/saveresume`;
+    let getNewIdx = `${process.env.REACT_APP_SPRING_URL}resume/getidx?username=${user_id}`;
+    let detailUrl = `${process.env.REACT_APP_SPRING_URL}resume/detail?resume_idx=${resume_idx}`;
 
     //info 값 불러오기 
     const savedInfo = () => {
@@ -374,7 +374,7 @@ const ResumeNewSave = () => {
     }
 
     //URL
-    let getResumeList = "http://localhost:9000/resume/resumelist?username=" + user_id;
+    let getResumeList = `${process.env.REACT_APP_SPRING_URL}resume/resumelist?username=${user_id}`;
 
     const [resumeList, setResumeList] = useState([]);
 
@@ -457,7 +457,7 @@ const ResumeNewSave = () => {
                                 </td>
                             </tr>
                             <tr>
-                                {radio === '대학교/대학원' || edu_radio === '2' ? <Major sch_major={sch_major} setSch_major={setSch_major} /> : <></>}
+                                {edu_radio === '2' || edu_radio === 2 ?  <Major sch_major={sch_major} setSch_major={setSch_major} /> : <></>}
                             </tr>
                         </tbody>
                     </table>

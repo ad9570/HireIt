@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const SideBar = ({ setAddTech, writeday, addTech, setAddCv, addCv, setAddIntro, setAddPort, addPort, addIntro }) => {
     return (

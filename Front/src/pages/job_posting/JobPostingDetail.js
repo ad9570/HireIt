@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './JobPostingDetail.css';
-import KaokaoMap from './KakaoMap';
-import templete from '../../assets/templete.jpg';
+import 'pages/job_posting/JobPostingDetail.css';
+import KaokaoMap from 'pages/job_posting/KakaoMap';
+import templete from 'assets/templete.jpg';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import CorpInfo from './CorpInfo';
-import DetailBtn from './DetailBtn';
-import IndivDetailBtn from './IndivDetailBtn';
+import CorpInfo from 'pages/job_posting/CorpInfo';
+import DetailBtn from 'pages/job_posting/DetailBtn';
+import IndivDetailBtn from 'pages/job_posting/IndivDetailBtn';
 
 const JobPostingDetail = () => {
 
@@ -47,11 +47,11 @@ const JobPostingDetail = () => {
 
     //URL
     const Navi = useNavigate();
-    let jobInfoURL = "http://localhost:9000/jobposting/detail?num=" + num;
-    let userInfoURL = "http://localhost:9000/jobposting/userinfo?username=" + corp_id;
-    let photoUrl = "http://localhost:9000/save/";
-    let scrapUrl = "http://localhost:9000/jobposting/updatescrap?username=" + corp_id + "&job_scrap=" + num;
-    let unscrapUrl = "http://localhost:9000/jobposting/unscrap?username=" + corp_id + "&num=" + num;
+    let jobInfoURL = `${process.env.REACT_APP_SPRING_URL}jobposting/detail?num=${num}`;
+    let userInfoURL = `${process.env.REACT_APP_SPRING_URL}jobposting/userinfo?username=${corp_id}`;
+    let photoUrl = `${process.env.REACT_APP_SPRING_URL}save/`;
+    let scrapUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/updatescrap?username=${corp_id}&job_scrap=${num}`;
+    let unscrapUrl = `${process.env.REACT_APP_SPRING_URL}jobposting/unscrap?username=${corp_id}&num=${num}`;
 
     //회사정보 데이터
     const Info = () => {

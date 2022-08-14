@@ -1,5 +1,5 @@
 import React from 'react';
-import './ResumeInput.css';
+import 'pages/resume/ResumeInput.css';
 
 const Major = ({ setSch_major, sch_major }) => {
     return (
