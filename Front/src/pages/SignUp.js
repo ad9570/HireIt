@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// import "./SignUp.scss";
+import "./SignUp.scss";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import img from "../assets/image/logo.png"
@@ -46,7 +46,7 @@ const SignUp = () => {
     }, [username, idCheck])
 
     return(
-        <div className="container">
+        <div className="container signupMain">
             <div className="loginLogo">
                 <img alt="" src={img} onClick={() => {nav("/")}}/>
             </div>
@@ -60,7 +60,7 @@ const SignUp = () => {
                 </li>
             </ul>
 
-            <form onSubmit={handleSubmit(signUp)}>
+            <form onSubmit={handleSubmit(signUp)} className="signupForm">
                 <div className="first-input input__block second-input__block">
                     <input type="text" placeholder="ID / Email" className="input" id="username"
                     {...register("username", {

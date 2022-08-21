@@ -19,7 +19,7 @@ const navi = useNavigate();
     const {currentPage}=useParams();
     // const [dto,setDto]=useParams('');
     
-    let photoUrl=process.env.REACT_APP_SPRING_URL+"image/";
+    let photoUrl=process.env.REACT_APP_SPRING_URL+"save/";
 
 
     return (
@@ -29,7 +29,7 @@ const navi = useNavigate();
                 dto.list && dto.list.map((v,i)=>(
 
                     <Card className="card" sx={{ maxWidth: 370, textShadow:' 2px 2px 2px gray'}} 
-                    onClick={()=>{navi('job_posting/detail/'+v.corp_id+'/'+v.num)}}>
+                    onClick={()=>{navi('../../job_posting/detail/'+v.corp_id+'/'+v.num)}}>
                         <CardActionArea>
                             <CardMedia
                             component="img"

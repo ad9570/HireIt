@@ -91,12 +91,12 @@ const Header = () => {
 
                     <ul className="header-main-nav-menu">
                         <li className="header-main-navs">
-                            <a href="/search" style={{textDecoration:'none'}}>채용</a>
+                            <a href="/search/1" style={{textDecoration:'none'}}>채용</a>
                         </li>
                         <li className="header-main-navs">
                             <a 
                                 onClick={()=>{
-                                    if(indivLogin){navi(`/resume/input/${id}`)}else{navi(`/login`)}
+                                    if(indivLogin){navi(`/resume/input/${login.id}`)}else{navi(`/login`)}
                                 }}>이력서</a>
                         </li>
                         <li className="header-main-navs">

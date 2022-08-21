@@ -25,7 +25,6 @@ const MiniCareer=()=>{
           //스프링으로부터 받아온 List 를 cateList 에 넣기
           setCateList(res.data);
           console.log("memo의 카테고리 리스트");
-          
       })
     }
 
@@ -36,32 +35,66 @@ const MiniCareer=()=>{
     },[url]);
 
     return (
-        <div>
-          
-            
-            
-            <div className="career" style={{width:'500px'}}>
+        <div>       
+
+           
+
+            <div className="career" style={{width:'500px', }}>
             
               <tbody>
                 {
                cateList && cateList.map((row,idx)=>(
-                    <table class="blockstyle" onClick={()=>{
+                    <table  onClick={()=>{
                       navi(`/board/detail/${row.board_id}`)
                   }} style={{cursor:"pointer"}}>
-  <div>
+  <div className="HAHAHA">
+          
                   <div>
                   <div scope="row" onClick={()=>{
                           navi(`/board/detail/${row.board_id}`)
                       }} style={{cursor:'pointer',fontWeight: "bold", marginTop:"30px"}}>
                         
-                          <span className="txt11" style={{fontSize:"15px"}}>{row.title}</span>
+
+
+
+
+
+
+
+                        <table>
+           
+            <tr>
+                <th className="tabless">{row.title}</th>&nbsp;
+                <th className="vvvvvvvvvvv"> {row.hit}</th>
+            </tr>
+
+            
+
+
+            
+
+           
+        </table>
+   {/* <span className="txt01" style={{fontSize:"15px",    fontWeight: "lighter" }}>
+                        <table>
+                      <tr>
+                        <td>   <a>  {row.title} </a></td>
+                      </tr>
+                      <tr>
+                        <td>  <span className="jo" style={{}}> 조회 {row.hit}</span></td>
+                      </tr>
+                </table>
+                    
+                       
+                               
+                        
+  </span> */}
+                        
                       </div>
                     {/* < style={{ fontWeight: "bold", marginTop:"30px"}}>{row.title}</td> */}
                   </div>
                 
-                  <div>
-                    <span className="txt13">조회  {row.hit}</span>
-                  </div>
+                 
                  
                  
                   </div>
