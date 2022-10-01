@@ -11,7 +11,6 @@ import com.hire.it.dto.ResumeSaveDto;
 
 @Mapper
 public interface ResumeMapper {
-	
 	public void insertResume(ResumeDto dto);
 	public MemberDto resumeUserInfo(String username);
 	public ResumeSaveDto resumeSaveDetail(Map<String, Object> map);
@@ -23,5 +22,4 @@ public interface ResumeMapper {
 	public ResumeDto getDetailIdx(String username);
 	public void updateResume(ResumeDto dto);
 	public List<ResumeDto> resumeList(String username);
-	
 }

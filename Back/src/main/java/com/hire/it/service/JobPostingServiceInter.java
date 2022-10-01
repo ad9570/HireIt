@@ -5,7 +5,6 @@ import com.hire.it.dto.JobPostingDto;
 import com.hire.it.dto.MemberDto;
 
 public interface JobPostingServiceInter {
-	
 	public void insertJob(JobPostingDto dto);
 	public JobPostingDto getNum(String corp_id);
 	public JobPostingDto jobDetail(int num);
@@ -19,5 +18,4 @@ public interface JobPostingServiceInter {
 	public String unscrap(String username);
 	public void mergeScrap(String username, String job_scrap);
 	public void insertApply(ApplyDto dto);
-	
 }

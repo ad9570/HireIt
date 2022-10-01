@@ -1,5 +1,7 @@
 package com.hire.it.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hire.it.dto.InsContentDto;
+import com.hire.it.dto.JobPostingDto;
 import com.hire.it.mapper.InsContentMapper;
 import com.hire.it.mapper.MainMapper;
 import com.hire.it.service.MainService;
@@ -45,14 +48,113 @@ public class MainController {
         return mainService.getQueryAboutJob(keyword);
     }
 
+    // @GetMapping("/searchCorp")
+    // public List<Map<String, Object>> getQCorp(@RequestParam String q){
+    //     return mainService.getQueryCorp(q);
+    // }
+
+    // @GetMapping("/searchJob")
+    // public List<Map<String, Object>> getQJob(@RequestParam String q){
+    //     return mainService.getQueryJob(q);
+    // }
+
     @GetMapping("/searchCorp")
-    public List<Map<String, Object>> getQCorp(@RequestParam String q){
-        return mainService.getQueryCorp(q);
-    }
+    public Map<String, Object> getQCorp(@RequestParam String q,
+          @RequestParam(defaultValue = "1")int currentPageCorp){
+       int totalCount;//총갯수
+      int perPage=5;//한 페이지당 보여질 글의 갯수
+      int perBlock=5;//한(밑에 페이지 숫자)블럭당 보여질 페이지수
+      int totalPage; //총페이지수
+      int startNum;//한페이지에서 보여질 시작 글번호
+      int startPage;//한블럭에서 보여질 시작 페이지 번호
+      int endPage;//한블럭에서 보여질 끝 페이지 번호
+      int no;//각페이지당 보여질 시작번호
+
+      System.out.println("currentPageCorp" + currentPageCorp);
+      
+      totalCount=mainService.getTotalCount(q);
+      totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+      startPage=(currentPageCorp-1)/perBlock*perBlock+1;
+            
+      endPage=startPage+perBlock-1;
+      if(totalPage<endPage) {
+         endPage=totalPage;
+      }
+      startNum=(currentPageCorp-1)*perPage;
+      no=totalCount-(currentPageCorp-1)*perPage;
+      List<Map<String, Object>> list= mainService.getQueryCorp(q,startNum, perPage);
+      System.out.println("list : "+list);
+      System.out.println("list mapper : "+mainService.getQueryCorp(q,startNum, perPage));
+      
+
+      System.out.println("keyword:" + q);
+      
+      List<Integer> parr=new ArrayList<>();
+      for(int pp=startPage;pp<=endPage;pp++) {
+         parr.add(pp);
+      }
+      
+      
+      System.out.println(no+"no");
+      Map<String, Object> map=new HashMap<>();
+      map.put("list", list);
+      map.put("parr", parr);
+      map.put("totalPage", totalPage);
+      map.put("totalCount", totalCount);
+      map.put("startPage", startPage);
+      map.put("endPage", endPage);
+      map.put("no", no==0?null:no);
+      
+      return map;
+   }
 
     @GetMapping("/searchJob")
-    public List<Map<String, Object>> getQJob(@RequestParam String q){
-        return mainService.getQueryJob(q);
+    public Map<String, Object> getQJob(@RequestParam String q,
+       @RequestParam(defaultValue = "1")int currentPageJob){
+   int totalCount;//총갯수
+   int perPage=8;//한 페이지당 보여질 글의 갯수
+   int perBlock=5;//한(밑에 페이지 숫자)블럭당 보여질 페이지수
+   int totalPage; //총페이지수
+   int startNum;//한페이지에서 보여질 시작 글번호
+   int startPage;//한블럭에서 보여질 시작 페이지 번호
+   int endPage;//한블럭에서 보여질 끝 페이지 번호
+   int no;//각페이지당 보여질 시작번호
+   
+   totalCount=mainService.getTotalCount2(q);
+   totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
+   //totalPage=(int)Math.ceil((double)totalCount/perPage);//무조건올림
+   
+   startPage=(currentPageJob-1)/perBlock*perBlock+1;
+         
+   endPage=startPage+perBlock-1;
+   if(totalPage<endPage) {
+      endPage=totalPage;
+   
+      
+   }
+   startNum=(currentPageJob-1)*perPage;
+   no=totalCount-(currentPageJob-1)*perPage;
+   List<Map<String,Object>> list= mainService.getQueryJob(q,startNum, perPage);
+   System.out.println("list : "+list);
+   
+   ArrayList<Integer> parr=new ArrayList<>();
+   for(int pp=startPage;pp<=endPage;pp++) {
+      parr.add(pp);
+   }
+   
+   
+   System.out.println(no+"jobno");
+   Map<String, Object> map=new HashMap<>();
+   map.put("list", list);
+   map.put("parr", parr);
+   map.put("totalPage", totalPage);
+   map.put("totalCount", totalCount);
+   map.put("startPage", startPage);
+   map.put("endPage", endPage);
+   map.put("no", no==0?null:no);
+   
+   return map;
     }
+
     
 }

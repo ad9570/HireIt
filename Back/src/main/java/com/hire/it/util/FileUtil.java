@@ -8,7 +8,6 @@ public class FileUtil {
 	{
 		int dot = fileName.lastIndexOf('.');
 		String ext = fileName.substring(dot, fileName.length()); //.부터 끝까지 확장자 추출
-		String file = fileName.substring(0,dot); //dot이전 추출
 		
 		Date date = new Date();
 		int y = date.getYear()+1900;

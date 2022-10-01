@@ -1,6 +1,5 @@
 package com.hire.it.controller;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -22,6 +21,7 @@ import com.hire.it.dto.JobPostingDto;
 import com.hire.it.dto.MemberDto;
 import com.hire.it.service.JobPostingService;
 import com.hire.it.util.FileUtil;
+
 
 @RestController
 @CrossOrigin
@@ -138,5 +138,4 @@ public class JobPostingController {
 	public void insertApply(@RequestBody ApplyDto dto) {
 		jobpostingService.insertApply(dto);
 	}
-	
 }

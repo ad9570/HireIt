@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 import com.hire.it.dto.BoardDto;
 import com.hire.it.dto.MemberDto;
 
-
 @Mapper
 public interface BoardMapper {
 	

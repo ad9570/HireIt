@@ -7,7 +7,6 @@ import com.hire.it.dto.ResumeDto;
 import com.hire.it.dto.ResumeSaveDto;
 
 public interface ResumeServiceInter {
-	
 	public void insertResume(ResumeDto dto);
 	public MemberDto resumeUserInfo(String username);
 	public ResumeSaveDto resumeSaveDetail(String id, int resume_idx);
@@ -19,5 +18,4 @@ public interface ResumeServiceInter {
 	public ResumeDto getDetailIdx(String username);
 	public void updateResume(ResumeDto dto);
 	public List<ResumeDto> resumeList(String username);
-	
 }

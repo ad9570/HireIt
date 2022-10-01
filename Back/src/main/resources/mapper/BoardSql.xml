@@ -58,5 +58,4 @@
       WHERE
          username=#{username} 
     </update>
-    
 </mapper>

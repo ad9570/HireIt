@@ -1,5 +1,6 @@
 package com.hire.it.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hire.it.mapper.MainMapper;
+import com.hire.it.dto.JobPostingDto;
 
 @Service
 public class MainService implements MainServiceInter {
@@ -30,20 +32,43 @@ public class MainService implements MainServiceInter {
         return mainMapper.getQueryAboutJob(keyword);
     }
 
-	@Override
-	public List<Map<String, Object>> getQueryCorp(String keyword) {
-		if(keyword == ""){
-            return null;
-        }
-        return mainMapper.getQueryCorp(keyword);
-	}
+    @Override
+    public List<Map<String, Object>> getQueryCorp(String keyword, int start, int perpage) {
+       // TODO Auto-generated method stub
+       
+        if(keyword == ""){
+             return null;
+         }
+       Map<String, Object> map = new HashMap<>();
+        map.put("start", start);
+        map.put("perpage", perpage);
+        map.put("keyword", keyword);
+        return mainMapper.getQueryCorp(map);
+    }
+    
+    @Override
+    public List<Map<String,Object>> getQueryJob(String keyword, int start, int perpage) {
+       
+        if(keyword == ""){
+             return null;
+         }
+       Map<String, Object> map = new HashMap<>();
+        map.put("start", start);
+        map.put("perpage", perpage);
+        map.put("keyword",keyword );
+         return mainMapper.getQueryJob(map);
+    }
 
-	@Override
-	public List<Map<String, Object>> getQueryJob(String keyword) {
-		if(keyword == ""){
-            return null;
-        }
-        return mainMapper.getQueryJob(keyword);
-	}
-
+    @Override
+    public int getTotalCount(String keyword) {
+       // TODO Auto-generated method stub
+       return mainMapper.getTotalCount(keyword);
+    }
+ 
+    @Override
+    public int getTotalCount2(String keyword) {
+       // TODO Auto-generated method stub
+       return mainMapper.getTotalCount2(keyword);
+    }
+ 
 }

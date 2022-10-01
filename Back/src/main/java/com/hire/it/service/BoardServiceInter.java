@@ -5,7 +5,6 @@ import java.util.List;
 import com.hire.it.dto.BoardDto;
 import com.hire.it.dto.MemberDto;
 
-
 public interface BoardServiceInter {
 	
 	public void insertBoard(BoardDto dto);
