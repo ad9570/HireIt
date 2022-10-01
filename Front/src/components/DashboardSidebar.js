@@ -13,7 +13,6 @@ import { User as UserIcon } from '../icons/User';
 import { UserAdd as UserAddIcon } from '../icons/UserAdd';
 import { Users as UsersIcon } from '../icons/Users';
 import { XCircle as XCircleIcon } from '../icons/XCircle';
-import { Logo } from './Logo';
 import { NavItem } from '../components/NavItem';
 
 const items = [
@@ -96,14 +95,6 @@ const items = [
                 href="/"
                 passHref
                 >
-                <a>
-                    <Logo
-                    sx={{
-                        height: 42,
-                        width: 42
-                    }}
-                    />
-                </a>
                 </NextLink>
             </Box>
             <Box sx={{ px: 2 }}>

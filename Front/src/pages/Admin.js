@@ -1,7 +1,6 @@
 
 import React from 'react';
 import Dashboard from './Dashboard';
-import Productsss from './Productsss';
 
 
 // import CustomDocument from './CustomDocument';
@@ -11,10 +10,7 @@ import Productsss from './Productsss';
 const Admin = () => {
     return (
         <div>
-            
             <Dashboard/>
-            
-            <Productsss/>
         </div>
     );
 };

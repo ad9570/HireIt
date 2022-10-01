@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import "./SignUp.scss";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
-import img from "../assets/image/logo.png"
+import img from "../images/hireit-logo-rect.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useCallback } from "react";
@@ -48,7 +48,7 @@ const SignUp = () => {
     return(
         <div className="container signupMain">
             <div className="loginLogo">
-                <img alt="" src={img} onClick={() => {nav("/")}}/>
+                <img alt="" src={img} style={{cursor:"pointer"}} onClick={() => {nav("/")}}/>
             </div>
 
             <ul className="links">
