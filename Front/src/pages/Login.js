@@ -3,8 +3,6 @@ import "./Login.scss";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import img from "../assets/image/logo.png";
-import { GoogleLogin } from 'react-google-login';
-import AuthPage from "./AuthPage";
 import { LoginContext } from "contexts/LoginContext";
 
 const Login = () => {
@@ -76,17 +74,6 @@ const Login = () => {
                 <i className="fa fa-google"></i>
                 Sign in with Google
             </button>
-            <AuthPage/>
-            <GoogleLogin
-    clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-    render={renderProps => (
-      <button onClick={renderProps.onClick} disabled={renderProps.disabled}>google</button>
-    )}
-    buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />
             <button className="github__btn">
                 <i className="fa fa-github"></i>
                 Sign in with GitHub
