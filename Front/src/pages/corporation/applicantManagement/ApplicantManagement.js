@@ -7,7 +7,6 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import NewResume from '../applicantsStatus/NewResume';
 import styled from 'styled-components';
-import { LoginContext } from '../../../contexts/LoginContext';
 
 const Container = styled.div`
     margin-top:50px;
@@ -50,7 +49,6 @@ function a11yProps(index) {
 export const ApplicantContext = createContext();
 
 const ApplicantManagement = () => {
-    const {login} = useContext(LoginContext);
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -63,7 +61,7 @@ const ApplicantManagement = () => {
     const [cat2, setCat2] = useState(true);
 
     useEffect(() => {
-        const getNewResume = process.env.REACT_APP_SPRING_URL + "corpManagement/getNewResume?corp_idx=" + login.id + "&progress=" + cat;
+        const getNewResume = process.env.REACT_APP_SPRING_URL + "corpManagement/getNewResume?corp_idx=" + localStorage.getItem('id') + "&progress=" + cat;
         axios.get(getNewResume)
             .then((res) => {
                 console.log("1데이터res.data", res.data)

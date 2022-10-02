@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import { LoginContext } from '../contexts/LoginContext';
 import insta_logo from '../images/instagram-logo.png'
 import './common.css';
 
 const Footer = () => {
-    const {login} = useContext(LoginContext);
     return (
         <div className='footer-wrap' style={{fontFamily:'S-CoreDream-5Medium', fontSize:'14px',lineHeight:'1.42857143',color:'#333'}}>
             <div className='footer footer-top'>

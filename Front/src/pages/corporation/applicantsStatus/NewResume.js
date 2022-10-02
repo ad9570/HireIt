@@ -16,7 +16,6 @@ import { ApplicantContext } from '../applicantManagement/ApplicantManagement';
 import EmailModal from './EmailModal';
 import ResumeStateButton from './buttons/ResumeStateButton';
 import Chip from '@mui/material/Chip';
-import { LoginContext } from '../../../contexts/LoginContext';
 
 const Container = styled.div`
     max-width: 1060px;
@@ -55,7 +54,6 @@ export const ResumeListContext = createContext();
 
 
 const NewResume = ({ resumeList, setCat }) => {
-    const {login} = useContext(LoginContext)
     const { cat, cat2, setCat2 } = useContext(ApplicantContext);
 
     const navi = useNavigate();
@@ -65,7 +63,7 @@ const NewResume = ({ resumeList, setCat }) => {
     const [corp_idx,setCorp_idx] = useState();
 
     useEffect(() => {
-        const corpIdxUrl = process.env.REACT_APP_SPRING_URL + 'corpManagement/getCorpIdx?corp_name=' + login.id
+        const corpIdxUrl = process.env.REACT_APP_SPRING_URL + 'corpManagement/getCorpIdx?corp_name=' + localStorage.getItem('id');
         axios.get(corpIdxUrl)
         .then(res=>{
             console.log("corpIdx",res.data)
@@ -134,7 +132,7 @@ const NewResume = ({ resumeList, setCat }) => {
 
     //하트 체크 확인 axios
     useEffect(() => {
-        const getCheckedHeartsUrl = process.env.REACT_APP_SPRING_URL + "corpManagement/getCheckedHeart?corp_id=" + login.id;
+        const getCheckedHeartsUrl = process.env.REACT_APP_SPRING_URL + "corpManagement/getCheckedHeart?corp_id=" + localStorage.getItem('id');
         axios.get(getCheckedHeartsUrl)
             .then((res) => {
                 console.log("2데이터res.data", res.data)
@@ -276,7 +274,7 @@ const NewResume = ({ resumeList, setCat }) => {
                                     
                                     checked={heartCheckedList.includes(list.num) ? true : false}
                                     onClick={(e) => {
-                                        e.target.checked ? insertHeart(login.id, list.num) : deleteHeart(login.id, list.num)
+                                        e.target.checked ? insertHeart(localStorage.getItem('id'), list.num) : deleteHeart(localStorage.getItem('id'), list.num)
                                     }}
                                 />
                                 {/* 사진 */}

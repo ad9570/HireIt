@@ -19,7 +19,6 @@ import DashboardSlick from '../pages/corporation/Dashboard/DashboardSlick'
 import JoinAd from './mainJobPosting/JoinAd';
 import Slider from "react-slick";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { LoginContext } from '../contexts/LoginContext';
 
 
 const InsightList = () => {
@@ -174,7 +173,6 @@ export const UserContext = createContext('');
 
 const Main = () => {
     const navi = useNavigate();
-    const { login } = useContext(LoginContext);
     // const value = useMemo(() => ({dispatch}), [dispatch]);
     const [show, setShow] = React.useState('');
     const handleClick = () => {
@@ -336,7 +334,7 @@ const Main = () => {
                         <MainContent>
                             <div
                                 onClick={() => {
-                                    !login && alert("로그인을 해주세요")
+                                    !localStorage.getItem('login') && alert("로그인을 해주세요")
                                     navi(`/login`)
                                 }}>
                                 <i class="bi bi-person" style={{ fontSize: '32px', color: '#333' }}></i>

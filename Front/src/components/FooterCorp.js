@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
-import { LoginContext } from '../contexts/LoginContext';
 
 
 const FooterCorp = () => {
-    const {login} = useContext(LoginContext);
     
     return (
         <div className='corp-footer-wrap'>
             <div className="corp-footer-container">
                 <div className="corp-footer-item">
                     <div className="corp-footer-links">
-                        {login?"":<><a href="" className="corp-footer-aLink" style={{textDecoration:'none'}}>
+                        {localStorage.getItem('login')?"":<><a href="" className="corp-footer-aLink" style={{textDecoration:'none'}}>
                             서비스 소개
                         </a>
                         <a href="" className="corp-footer-aLink corp-marginLeft" style={{textDecoration:'none'}}>

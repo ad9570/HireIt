@@ -7,7 +7,6 @@ import { ResumeListContext } from '../NewResume';
 import { ApplicantContext } from '../../applicantManagement/ApplicantManagement';
 import EmailModal from '../EmailModal';
 import axios from 'axios';
-import { LoginContext } from '../../../../contexts/LoginContext';
 
 const ToggleSelect = styled.button`
     
@@ -87,7 +86,6 @@ const resumeProgress = [
     ];
 
 const ResumeStateButton = ({ setCat }) => {
-    const {login} = useContext(LoginContext);
     const { alarm, open, anchorEl,id, checkedList, resumeStateAlarm, buttonMatch } = useContext(ResumeListContext);
     const { cat } = useContext(ApplicantContext);
     let applicantName = checkedList.map(data => data.user_name);

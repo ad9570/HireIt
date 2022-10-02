@@ -13,7 +13,6 @@ import Category from './Category';
 import SearchQuery from './search/SearchQuery';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/hireit-logo-rect.png'
-import { LoginContext } from '../contexts/LoginContext';
 
 import axios from 'axios';
 
@@ -21,7 +20,6 @@ const CommunityHeader = () => {
 
   const [toggleBtn, setToggleBtn] = useState(false);
   
-  const {indivLogin,setIndivLogin,login} = useContext(LoginContext);
   const [searchToggle, setSearchToggle] = useState(false);
   const [catDisplay, setCatDisplay] = useState('none');
   const catToggle=()=>{
@@ -33,7 +31,7 @@ const CommunityHeader = () => {
 
   const [alarmCount, setAlarmCount] = useState(null);
   useEffect(()=>{
-      const getAlarmCountUrl = process.env.REACT_APP_SPRING_URL + "getAlarmCount?id=" + login.id;
+      const getAlarmCountUrl = process.env.REACT_APP_SPRING_URL + "getAlarmCount?id=" + localStorage.getItem('id');
       axios.get(getAlarmCountUrl)
       .then(res=>{
           setAlarmCount(res.data)
@@ -105,17 +103,17 @@ const CommunityHeader = () => {
                                     <SearchIcon sx={{color:searchToggle?'#0a58ca':''}}/>
                                 </button>
                             </li>
-                            {indivLogin?<li style={{margin:'3px 3px 0 15px',cursor:'pointer' }}
+                            {localStorage.getItem('login')?<li style={{margin:'3px 3px 0 15px',cursor:'pointer' }}
                                 onClick={()=>{
                                     navi(`/mypage`)
                                 }}>
                                  
                             {console.log('toggleBtn',toggleBtn)}
                             </li>:''}
-                            {!indivLogin&&<li>
+                            {!localStorage.getItem('login')&&<li>
                                 <button className="signup-button"
                                     onClick={()=>{
-                                        if(indivLogin){setIndivLogin(!indivLogin)}else navi(`/login`)
+                                        if(!localStorage.getItem('login')) navi(`/login`)
                                     }}>
                                     회원가입/로그인
                                 </button>

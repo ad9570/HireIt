@@ -18,7 +18,6 @@ import { click } from '@testing-library/user-event/dist/click';
 import axios from 'axios';
 import { useEffect } from 'react';
 import './Search.css';
-import { LoginContext } from 'contexts/LoginContext';
 
 
 
@@ -58,11 +57,10 @@ const Search = (props) => {
     };
 
     //로그인 ok
-    const { login, setLogin, indivLogin, setIndivLogin, corpLogin, setCorpLogin } = useContext(LoginContext);
 
     const initFunc=()=>{
-        if(!indivLogin){
-            console.log(11111, indivLogin);
+        if(!localStorage.getItem('login')){
+            console.log(11111, localStorage.getItem('login'));
             // alert("먼저 로그인 후 글을 작성해주세요");
             // navi("/login"); //login으로 가기
         }

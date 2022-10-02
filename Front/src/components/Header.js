@@ -7,7 +7,6 @@ import Category from './Category';
 import SearchQuery from './search/SearchQuery';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/hireit-logo-rect.png'
-import { LoginContext } from '../contexts/LoginContext';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
@@ -46,7 +45,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Header = () => {
     const [toggleBtn, setToggleBtn] = useState(false);
     const navi = useNavigate();
-    const {indivLogin,setIndivLogin,login} = useContext(LoginContext);
     const [searchToggle, setSearchToggle] = useState(false);
     const [catDisplay, setCatDisplay] = useState('none');
     const catToggle=()=>{
@@ -58,7 +56,7 @@ const Header = () => {
 
     const [alarmCount, setAlarmCount] = useState(null);
     useEffect(()=>{
-        const getAlarmCountUrl = process.env.REACT_APP_SPRING_URL + "getAlarmCount?id=" + login.id;
+        const getAlarmCountUrl = process.env.REACT_APP_SPRING_URL + "getAlarmCount?id=" + localStorage.getItem('id');
         axios.get(getAlarmCountUrl)
         .then(res=>{
             setAlarmCount(res.data)
@@ -96,7 +94,7 @@ const Header = () => {
                         <li className="header-main-navs">
                             <a 
                                 onClick={()=>{
-                                    if(indivLogin){navi(`/resume/input/${login.id}`)}else{navi(`/login`)}
+                                    if(localStorage.getItem('login')){navi(`/resume/input/${localStorage.getItem('id')}`)}else{navi(`/login`)}
                                 }}>이력서</a>
                         </li>
                         <li className="header-main-navs">
@@ -114,7 +112,7 @@ const Header = () => {
                                     <SearchIcon sx={{color:searchToggle?'#0a58ca':''}}/>
                                 </button>
                             </li>
-                            {indivLogin?<li style={{margin:'3px 3px 0 15px',cursor:'pointer' }}
+                            {localStorage.getItem('login')?<li style={{margin:'3px 3px 0 15px',cursor:'pointer' }}
                                 onClick={()=>{
                                     navi(`/mypage`)
                                 }}>
@@ -133,10 +131,10 @@ const Header = () => {
                                 {/* <i class="bi bi-person-circle" style={{fontSize:'23px', color:'#333',cursor:'pointer'}}></i> */}
                             {console.log('toggleBtn',toggleBtn)}
                             </li>:''}
-                            {!indivLogin&&<li>
+                            {!localStorage.getItem('login')&&<li>
                                 <button className="signup-button"
                                     onClick={()=>{
-                                        if(indivLogin){setIndivLogin(!indivLogin)}else navi(`/login`)
+                                        if(!localStorage.getItem('login')) navi(`/login`)
                                     }}>
                                     회원가입/로그인
                                 </button>
@@ -164,7 +162,12 @@ const Header = () => {
                 <li style={{fontSize:'14px'}}><a class="dropdown-item" href="/mypage/alarm">내 소식 ({alarmCount})</a></li>
                 <li style={{fontSize:'14px'}}><a class="dropdown-item" href="/mypage">마이페이지</a></li>
                 <li style={{fontSize:'14px',borderTop:'1px solid lightgray'}}
-                    onClick={()=>{}}><a class="dropdown-item" href="#"><span style={{color:'gray'}}>로그아웃</span></a></li>
+                    onClick={()=>{
+                            localStorage.removeItem('login');
+                            localStorage.removeItem('id');
+                            localStorage.removeItem('token');
+                        }}>
+                        <a class="dropdown-item" href="#"><span style={{color:'gray'}}>로그아웃</span></a></li>
             </ul>
         </>        
     );

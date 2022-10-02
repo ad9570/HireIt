@@ -1,16 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./Login.scss";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import img from "../images/hireit-logo-rect.png";
-import { LoginContext } from "contexts/LoginContext";
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errormsg, setErrormsg] = useState('');
     const nav=useNavigate();
-    const { login, setLogin, indivLogin, setIndivLogin, corpLogin, setCorpLogin } = useContext(LoginContext);
 
     const signIn = (e) => {
         e.preventDefault();
@@ -21,12 +19,9 @@ const Login = () => {
             if (res.data===0) {
                 alert("아이디 또는 비밀번호가 맞지 않습니다");
             } else {
-                setLogin({
-                    ...login,
-                    id: username,
-                    token: res.data.token
-                })
-                setIndivLogin(true);
+                localStorage.setItem('login', true);
+                localStorage.setItem('id', username);
+                localStorage.setItem('token', res.data.token);
                 nav(-1);
             }
         }).catch(error => {

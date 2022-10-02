@@ -3,7 +3,6 @@ import Header from './components/Header';
 import { Route, Routes } from "react-router-dom";
 import Login from './pages/Login';
 import { useState } from 'react';
-import { LoginContext } from './contexts/LoginContext';
 import SignUp from './pages/SignUp';
 import Main from './components/Main';
 import HeaderCorp from './components/HeaderCorp';
@@ -42,17 +41,10 @@ import SearchCorp from './pages/SearchCorp';
 import Admin from 'pages/Admin';
 
 function App() {
-  const [login, setLogin] = useState({
-    ok: 'no',
-    id: '',
-    token: ''
-  });
-  const [indivLogin, setIndivLogin] = useState(true);
-  const [corpLogin, setCorpLogin] = useState(false);
   const [category, setCategory]=useState([]);
 
   return (
-      <LoginContext.Provider value={{login, setLogin, indivLogin, setIndivLogin, corpLogin, setCorpLogin}}>
+      <>
         <div className="headder">
           <Routes>
             <Route path='/corp/*' element={<HeaderCorp />} />
@@ -148,7 +140,7 @@ function App() {
             <Route path='*' element={<></>}/>
           </Routes>
         </div>
-      </LoginContext.Provider>
+      </>
   );
 }
 
