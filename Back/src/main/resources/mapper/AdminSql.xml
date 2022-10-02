@@ -4,7 +4,7 @@
 	<select id="getMemberCount" resultType="Integer">
 		SELECT COUNT(*)
 		FROM user
-		WHERE role > 0
+		WHERE role &gt; 0
 		GROUP BY role
 		ORDER BY role
 	</select>
