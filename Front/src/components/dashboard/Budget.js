@@ -1,6 +1,5 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import MoneyIcon from '@mui/icons-material/Money';
+import PostAddIcon from '@mui/icons-material/PostAdd';
 
 export const Budget = (props) => (
   <Card
@@ -19,13 +18,13 @@ export const Budget = (props) => (
             gutterBottom
             variant="overline"
           >
-            BUDGET
+            채용 공고
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            $24k
+            {`${props.jobPostCnt}건`}
           </Typography>
         </Grid>
         <Grid item>
@@ -36,7 +35,7 @@ export const Budget = (props) => (
               width: 56
             }}
           >
-            <MoneyIcon />
+            <PostAddIcon />
           </Avatar>
         </Grid>
       </Grid>
@@ -47,21 +46,11 @@ export const Budget = (props) => (
           alignItems: 'center'
         }}
       >
-        <ArrowDownwardIcon color="error" />
-        <Typography
-          color="error"
-          sx={{
-            mr: 1
-          }}
-          variant="body2"
-        >
-          12%
-        </Typography>
         <Typography
           color="textSecondary"
           variant="caption"
         >
-          Since last month
+          {`총 ${props.jobPostCnt}건의 채용 공고가 있습니다.`}
         </Typography>
       </Box>
     </CardContent>

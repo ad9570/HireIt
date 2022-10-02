@@ -32,7 +32,7 @@ public class AdminService implements AdminServiceInter {
 
 	@Override
 	public int getEmpRate() {
-		return (int)Math.round(adminMapper.getEmpRate());
+		return (int)Math.round(adminMapper.getEmpRate() * 100);
 	}
 
 	@Override
@@ -43,6 +43,13 @@ public class AdminService implements AdminServiceInter {
 	@Override
 	public List<AlarmDto> getCorpApplication() {
 		return adminMapper.getCorpApplication();
+	}
+
+	@Override
+	public void applyHandle(int num, int idx) {
+		adminMapper.applyHandle(num);
+		adminMapper.changeRole(idx);
+		adminMapper.changeAuth(idx);
 	}
 
 }

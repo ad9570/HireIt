@@ -13,5 +13,6 @@ public interface AdminServiceInter {
 	public int getEmpRate();
 	public List<MemberDto> getMemberList();
 	public List<AlarmDto> getCorpApplication();
+	public void applyHandle(int num, int idx);
 
 }

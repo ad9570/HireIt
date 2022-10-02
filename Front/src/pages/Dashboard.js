@@ -6,12 +6,9 @@ import { TasksProgress } from '../components/dashboard/TasksProgress';
 import { TotalCustomers } from '../components/dashboard/TotalCustomers';
 import { TotalProfit } from '../components/dashboard/TotalProfit';
 import { DashboardLayout } from '../components/DashboardLayout';
-import Chartreal from './Chartreal';
 
-const Dashboard = () => (
-  
+const Dashboard = ({ statistics, userList, applyList, applyHandle }) => (
   <>
-    
       <title>
         Dashboard | Material Kit
       </title>
@@ -35,7 +32,7 @@ const Dashboard = () => (
             xl={3}
             xs={12}
           >
-            <Budget />
+            <TotalCustomers indCnt={statistics.indiv} crpCnt={statistics.corp}/>
           </Grid>
           <Grid
             item
@@ -44,7 +41,7 @@ const Dashboard = () => (
             sm={6}
             xs={12}
           >
-            <TotalCustomers />
+            <Budget jobPostCnt={statistics.jobPosting}/>
           </Grid>
           <Grid
             item
@@ -53,7 +50,7 @@ const Dashboard = () => (
             sm={6}
             xs={12}
           >
-            <TasksProgress />
+            <TotalProfit appCnt={statistics.apply}/>
           </Grid>
           <Grid
             item
@@ -62,7 +59,7 @@ const Dashboard = () => (
             sm={6}
             xs={12}
           >
-            <TotalProfit sx={{ height: '100%' }} />
+            <TasksProgress hireRate={statistics.rate}/>
           </Grid>
           <Grid
             item
@@ -80,7 +77,6 @@ const Dashboard = () => (
             xl={12}
             xs={12}
           >
-              <Chartreal/>
           </Grid>
           <Grid
             item
@@ -89,7 +85,7 @@ const Dashboard = () => (
             xl={3}
             xs={12}
           >
-            <LatestProducts sx={{ height: '100%' }} />
+            <LatestProducts applyList={applyList} applyHandle={applyHandle}/>
           </Grid>
           <Grid
             item
@@ -98,7 +94,7 @@ const Dashboard = () => (
             xl={9}
             xs={12}
           >
-            <LatestOrders />
+            <LatestOrders userList={userList}/>
           </Grid>
         </Grid>
       </Container>

@@ -1,5 +1,3 @@
-import { formatDistanceToNow, subHours } from 'date-fns';
-import { v4 as uuid } from 'uuid';
 import {
     Box,
     Button,
@@ -9,77 +7,34 @@ import {
     IconButton,
     List,
     ListItem,
-    ListItemAvatar,
     ListItemText
     } from '@mui/material';
     import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-    import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-    const products = [
-    {
-        id: uuid(),
-        name: 'Dropbox',
-        imageUrl: '/static/images/products/product_1.png',
-        updatedAt: subHours(Date.now(), 2)
-    },
-    {
-        id: uuid(),
-        name: 'Medium Corporation',
-        imageUrl: '/static/images/products/product_2.png',
-        updatedAt: subHours(Date.now(), 2)
-    },
-    {
-        id: uuid(),
-        name: 'Slack',
-        imageUrl: '/static/images/products/product_3.png',
-        updatedAt: subHours(Date.now(), 3)
-    },
-    {
-        id: uuid(),
-        name: 'Lyft',
-        imageUrl: '/static/images/products/product_4.png',
-        updatedAt: subHours(Date.now(), 5)
-    },
-    {
-        id: uuid(),
-        name: 'GitHub',
-        imageUrl: '/static/images/products/product_5.png',
-        updatedAt: subHours(Date.now(), 9)
-    }
-    ];
+    import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
     export const LatestProducts = (props) => (
     <Card {...props}>
         <CardHeader
-        subtitle={`${products.length} in total`}
-        title="Latest Products"
+        subtitle={`${props.applyList.length} in total`}
+        title="기업회원 신청 리스트"
         />
         <Divider />
         <List>
-        {products.map((product, i) => (
+        {props.applyList && props.applyList.map((list, idx) => (
             <ListItem
-            divider={i < products.length - 1}
-            key={product.id}
+            divider={idx < props.applyList.length - 1}
+            key={list.num}
             >
-            <ListItemAvatar>
-                <img
-                alt={product.name}
-                src={product.imageUrl}
-                style={{
-                    height: 48,
-                    width: 48
-                }}
-                />
-            </ListItemAvatar>
             <ListItemText
-                primary={product.name}
-                secondary={`Updated ${formatDistanceToNow(product.updatedAt)}`}
+                primary={list.title}
+                secondary={list.content}
             />
             <IconButton
                 edge="end"
                 size="small"
+                onClick={() => props.applyHandle(list.num, list.corp_idx, list.title)}
             >
-                <MoreVertIcon />
+                <CheckCircleIcon />
             </IconButton>
             </ListItem>
         ))}

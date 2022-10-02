@@ -18,13 +18,13 @@ export const TasksProgress = (props) => (
                 gutterBottom
                 variant="overline"
             >
-                TASKS PROGRESS
+                구직 성공률
             </Typography>
             <Typography
                 color="textPrimary"
                 variant="h4"
             >
-                75.5%
+                {`${props.hireRate}%`}
             </Typography>
             </Grid>
             <Grid item>
@@ -41,7 +41,7 @@ export const TasksProgress = (props) => (
         </Grid>
         <Box sx={{ pt: 3 }}>
             <LinearProgress
-            value={75.5}
+            value={props.hireRate}
             variant="determinate"
             />
         </Box>

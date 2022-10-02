@@ -40,6 +40,7 @@ public class UserService {
                 .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
                 .name(userDto.getName())
+                .role("1")
                 .authorities(Collections.singleton(authority))
                 .activated(true)
                 .build();

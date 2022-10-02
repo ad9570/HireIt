@@ -8,10 +8,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hire.it.dto.AlarmDto;
+import com.hire.it.dto.CorpDto;
 import com.hire.it.dto.MemberDto;
 import com.hire.it.service.AdminService;
 
@@ -49,6 +52,12 @@ public class AdminController {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public List<AlarmDto> corpApply() {
 		return adminService.getCorpApplication();
+	}
+	
+	@PostMapping("/applyHandle")
+	@PreAuthorize("hasAnyRole('ADMIN')")
+	public void applyHandle(@RequestBody CorpDto dto) {
+		adminService.applyHandle(dto.getNum(), dto.getCorp_idx());
 	}
 	
 }

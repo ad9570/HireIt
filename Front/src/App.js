@@ -38,7 +38,7 @@ import CommToesa from './pages/CommToesa';
 import CommQandA from './pages/CommQandA';
 import Search from './pages/Search';
 import SearchCorp from './pages/SearchCorp';
-import Admin from 'pages/Admin';
+import MyPage from 'pages/MyPage';
 
 function App() {
   const [category, setCategory]=useState([]);
@@ -77,7 +77,7 @@ function App() {
             <Route path='/search' element={<SearchResult/>} />
             <Route path='/search/:currentPage' element={<Search/>}/>
             <Route path='/pagelist/:currentPage' element={<SearchCorp/>}/>
-            <Route path='/admin' element={<Admin/>} />
+            <Route path='/mypage' element={<MyPage/>}/>
             <Route path='*' element={<></>}/>
 
             {/* resume */}

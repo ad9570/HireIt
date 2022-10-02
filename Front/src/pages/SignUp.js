@@ -24,9 +24,10 @@ const SignUp = () => {
         axios.post(signUpUrl, data)
         .then(res => {
             alert("가입 성공");
-            nav("/login");
+            nav(-1);
         }).catch(err => {
             alert("가입 실패");
+            nav(-1);
         })
     }
 

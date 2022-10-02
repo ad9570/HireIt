@@ -48,6 +48,9 @@ public class User {
 	@Column(name = "name", length = 50)
 	private String name;
 	
+	@Column(name = "role", length = 50)
+	private String role;
+	
 	@JsonIgnore
 	@Column(name = "activated")
 	private boolean activated;

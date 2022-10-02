@@ -1,5 +1,5 @@
-import { Avatar, Card, CardContent, Grid, Typography } from '@mui/material';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 export const TotalProfit = (props) => (
   <Card {...props}>
@@ -15,13 +15,13 @@ export const TotalProfit = (props) => (
             gutterBottom
             variant="overline"
           >
-            TOTAL PROFIT
+            구직 활동
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            $23k
+            {`${props.appCnt}건`}
           </Typography>
         </Grid>
         <Grid item>
@@ -32,10 +32,24 @@ export const TotalProfit = (props) => (
               width: 56
             }}
           >
-            <AttachMoneyIcon />
+            <HandshakeIcon />
           </Avatar>
         </Grid>
       </Grid>
+      <Box
+        sx={{
+          pt: 2,
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <Typography
+          color="textSecondary"
+          variant="caption"
+        >
+          {`총 ${props.appCnt}건의 구직 활동이 진행중입니다.`}
+        </Typography>
+      </Box>
     </CardContent>
   </Card>
 );

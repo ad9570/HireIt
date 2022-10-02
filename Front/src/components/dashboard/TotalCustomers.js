@@ -1,5 +1,4 @@
 import { Avatar, Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import PeopleIcon from '@mui/icons-material/PeopleOutlined';
 
 export const TotalCustomers = (props) => (
@@ -16,13 +15,13 @@ export const TotalCustomers = (props) => (
             gutterBottom
             variant="overline"
           >
-            TOTAL CUSTOMERS
+            개인 회원 / 기업 회원
           </Typography>
           <Typography
             color="textPrimary"
             variant="h4"
           >
-            1,6k
+            {`${props.indCnt}명 / ${props.crpCnt}명`}
           </Typography>
         </Grid>
         <Grid item>
@@ -44,20 +43,11 @@ export const TotalCustomers = (props) => (
           pt: 2
         }}
       >
-        <ArrowUpwardIcon color="success" />
-        <Typography
-          variant="body2"
-          sx={{
-            mr: 1
-          }}
-        >
-          16%
-        </Typography>
         <Typography
           color="textSecondary"
           variant="caption"
         >
-          Since last month
+          {`총 ${props.indCnt + props.crpCnt}명의 회원이 있습니다.`}
         </Typography>
       </Box>
     </CardContent>

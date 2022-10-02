@@ -16,5 +16,8 @@ public interface AdminMapper {
 	public double getEmpRate();
 	public List<MemberDto> getMemberList();
 	public List<AlarmDto> getCorpApplication();
+	public void applyHandle(int num);
+	public void changeRole(int idx);
+	public void changeAuth(int idx);
 	
 }

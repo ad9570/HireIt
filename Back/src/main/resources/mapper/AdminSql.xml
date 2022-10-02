@@ -31,6 +31,21 @@
 		SELECT *
 		FROM alarm
 		WHERE user_id = 'admin'
-		AND title = '기업 회원 지원'
+		AND apply_num = 0
 	</select>
+	<delete id="applyHandle" parameterType="int">
+		DELETE
+		FROM alarm
+		WHERE num = #{num}
+	</delete>
+	<update id="changeRole" parameterType="int">
+		UPDATE user
+		SET role = '2'
+		WHERE user_id = #{idx}
+	</update>
+	<update id="changeAuth" parameterType="int">
+		UPDATE user_authority
+		SET authority_name = 'ROLE_CORP'
+		WHERE user_id = #{idx}
+	</update>
 </mapper>

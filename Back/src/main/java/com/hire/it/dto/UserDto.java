@@ -32,6 +32,8 @@ public class UserDto {
    @NotNull
    @Size(min = 1, max = 50)
    private String name;
+   
+   private String role;
 
    private Set<AuthorityDto> authorityDtoSet;
 
