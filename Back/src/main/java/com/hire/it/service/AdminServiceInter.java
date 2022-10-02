@@ -1,20 +1,17 @@
-package com.hire.it.mapper;
+package com.hire.it.service;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 
 import com.hire.it.dto.AlarmDto;
 import com.hire.it.dto.MemberDto;
 
-@Mapper
-public interface AdminMapper {
+public interface AdminServiceInter {
 
 	public List<Integer> getMemberCount();
 	public int getJobPostingCount();
 	public int getApplyCount();
-	public double getEmpRate();
+	public int getEmpRate();
 	public List<MemberDto> getMemberList();
 	public List<AlarmDto> getCorpApplication();
-	
+
 }

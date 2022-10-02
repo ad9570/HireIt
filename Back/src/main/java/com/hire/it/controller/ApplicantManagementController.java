@@ -1,12 +1,10 @@
 package com.hire.it.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hire.it.dto.AlarmDto;
 import com.hire.it.dto.ApplicantResume;
-import com.hire.it.dto.FavoriteDto;
 import com.hire.it.mapper.ApplicantManagementMapper;
 import com.hire.it.service.ApplicantManagementService;
 import com.hire.it.service.MailService;

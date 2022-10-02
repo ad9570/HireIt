@@ -13,18 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hire.it.dto.InsContentDto;
-import com.hire.it.dto.JobPostingDto;
 import com.hire.it.mapper.InsContentMapper;
-import com.hire.it.mapper.MainMapper;
 import com.hire.it.service.MainService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/")
 public class MainController {
-
-    @Autowired
-    private MainMapper mainMapper;
 
     @Autowired
     private MainService mainService;
