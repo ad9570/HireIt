@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    @PreAuthorize("hasAnyRole('USER','ADMIN')") //user권한, admin권한 모두 사용 가능한 메소드
+    @PreAuthorize("hasAnyRole('USER', 'CORP', 'ADMIN')") //user권한, admin권한 모두 사용 가능한 메소드
     public ResponseEntity<UserDto> getMyUserInfo(HttpServletRequest request) {
         return ResponseEntity.ok(userService.getMyUserWithAuthorities());
     }
