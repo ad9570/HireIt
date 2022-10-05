@@ -1,11 +1,11 @@
 import React from 'react';
 
-const User = () => {
+const Corp = () => {
     return (
         <div>
-            일반회원페이지
+            기업회원페이지
         </div>
     );
 };
 
-export default User;
+export default Corp;

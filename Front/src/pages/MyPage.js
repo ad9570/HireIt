@@ -3,6 +3,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Admin from './Admin';
+import Corp from './Corp';
+import User from './User';
 
 const MyPage = () => {
     const [userData, setUserData] = useState();
@@ -25,8 +27,8 @@ const MyPage = () => {
         <div>
             {userData &&
                 (userData.authorityDtoSet[0].authorityName === 'ROLE_ADMIN' ? <Admin/>
-                : userData.authorityDtoSet[0].authorityName === 'ROLE_USER' ? '일반회원'
-                : '기업회원')
+                : userData.authorityDtoSet[0].authorityName === 'ROLE_USER' ? <User/>
+                : <Corp/>)
             }
         </div>
     );
