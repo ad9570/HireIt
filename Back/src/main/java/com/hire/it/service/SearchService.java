@@ -1,4 +1,4 @@
-package com.hire.it.service;
+package data.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hire.it.dto.JobPostingDto;
-import com.hire.it.mapper.SearchMapper;
+import data.dto.JobPostingDto;
+import data.mapper.SearchMapper;
+import util.SplitUtill;
 
 @Service
 public class SearchService implements SearchServiceInter {
@@ -16,6 +17,7 @@ public class SearchService implements SearchServiceInter {
 	@Autowired
 	private SearchMapper mapper;
 	
+	SplitUtill su = new SplitUtill();
 	@Override
 	public List<JobPostingDto> getList(String job_type, String com_addr, int experience, String preferred_tech,
 			int sort, int start, int perpage) {
@@ -32,14 +34,7 @@ public class SearchService implements SearchServiceInter {
 				map.put(key, "");
 			}
 		} else {
-			for (int i=0; i<jobs.length; i++) {
-				String key = "job_type"+(i+1);
-				map.put(key, '%'+jobs[i]+'%');
-			}
-			for (int i=jobs.length; i<3; i++) {
-				String key = "job_type"+(i+1);
-				map.put(key, "");
-			}
+			su.clicked_type(map, jobs,3,job_type);
 		}
 		
 		//address
@@ -67,15 +62,7 @@ public class SearchService implements SearchServiceInter {
 		
 		//tech
 		String[] techs = preferred_tech.split(",");
-		for (int i=0; i<techs.length; i++) {
-			String key = "preferred_tech"+(i+1);
-			map.put(key, '%'+techs[i]+'%');
-		}
-		for (int i=techs.length; i<5; i++) {
-			String key = "preferred_tech"+(i+1);
-			map.put(key, "");
-		}
-		
+		su.clicked_type(map, techs,5,preferred_tech);
 		//experience
 		map.put("experience", experience);
 		//perpage
@@ -86,6 +73,8 @@ public class SearchService implements SearchServiceInter {
 		return mapper.getList(map) ;
 		
 	}
+
+
 
 
 	@Override
@@ -132,14 +121,7 @@ public class SearchService implements SearchServiceInter {
 				map.put(key, "");
 			}
 		} else {
-			for (int i=0; i<jobs.length; i++) {
-				String key = "job_type"+(i+1);
-				map.put(key, '%'+jobs[i]+'%');
-			}
-			for (int i=jobs.length; i<3; i++) {
-				String key = "job_type"+(i+1);
-				map.put(key, "");
-			}
+			su.clicked_type(map, jobs,3,job_type);
 		}
 		
 		//address
@@ -167,14 +149,7 @@ public class SearchService implements SearchServiceInter {
 		
 		//tech
 				String[] techs = preferred_tech.split(",");
-				for (int i=0; i<techs.length; i++) {
-					String key = "preferred_tech"+(i+1);
-					map.put(key, '%'+techs[i]+'%');
-				}
-				for (int i=techs.length; i<5; i++) {
-					String key = "preferred_tech"+(i+1);
-					map.put(key, "");
-				}
+				su.clicked_type(map, techs,5,preferred_tech);
 				
 		//experience
 		map.put("experience", experience);
