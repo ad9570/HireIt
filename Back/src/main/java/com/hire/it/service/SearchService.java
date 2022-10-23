@@ -1,4 +1,4 @@
-package data.service;
+package com.hire.it.service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import data.dto.JobPostingDto;
-import data.mapper.SearchMapper;
-import util.SplitUtill;
+import com.hire.it.dto.JobPostingDto;
+import com.hire.it.mapper.SearchMapper;
+import com.hire.it.util.SplitUtil;
 
 @Service
 public class SearchService implements SearchServiceInter {
@@ -17,7 +17,8 @@ public class SearchService implements SearchServiceInter {
 	@Autowired
 	private SearchMapper mapper;
 	
-	SplitUtill su = new SplitUtill();
+	SplitUtil su = new SplitUtil();
+	
 	@Override
 	public List<JobPostingDto> getList(String job_type, String com_addr, int experience, String preferred_tech,
 			int sort, int start, int perpage) {
@@ -34,7 +35,7 @@ public class SearchService implements SearchServiceInter {
 				map.put(key, "");
 			}
 		} else {
-			su.clicked_type(map, jobs,3,job_type);
+			su.clickedType(map, jobs,3,job_type);
 		}
 		
 		//address
@@ -62,7 +63,7 @@ public class SearchService implements SearchServiceInter {
 		
 		//tech
 		String[] techs = preferred_tech.split(",");
-		su.clicked_type(map, techs,5,preferred_tech);
+		su.clickedType(map, techs,5,preferred_tech);
 		//experience
 		map.put("experience", experience);
 		//perpage
@@ -121,7 +122,7 @@ public class SearchService implements SearchServiceInter {
 				map.put(key, "");
 			}
 		} else {
-			su.clicked_type(map, jobs,3,job_type);
+			su.clickedType(map, jobs,3,job_type);
 		}
 		
 		//address
@@ -149,7 +150,7 @@ public class SearchService implements SearchServiceInter {
 		
 		//tech
 				String[] techs = preferred_tech.split(",");
-				su.clicked_type(map, techs,5,preferred_tech);
+				su.clickedType(map, techs,5,preferred_tech);
 				
 		//experience
 		map.put("experience", experience);
